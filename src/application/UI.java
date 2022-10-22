@@ -1,7 +1,12 @@
 package application;
 
 import chesslayer.ChessPiece;
+import chesslayer.ChessPosition;
 import chesslayer.enums.Color;
+
+import java.util.InputMismatchException;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class UI {
 
@@ -11,6 +16,19 @@ public class UI {
     public static final String ANSI_WHITE = "\u001B[37m";
 
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+
+    // Reading a String and transform it into a ChessPosition
+    public static ChessPosition readChessPosition(Scanner sc) {
+        try {
+            String s = sc.nextLine().toLowerCase(Locale.ROOT);
+            char column = s.charAt(0);
+            int row = Integer.parseInt(s.substring(1));
+            return new ChessPosition(column, row);
+        }
+        catch (RuntimeException e) {
+            throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
+        }
+    }
 
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i=0; i<pieces.length; i++) {

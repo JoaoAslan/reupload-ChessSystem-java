@@ -49,6 +49,17 @@ public class Board {
         piece.position = position;
     }
 
+    // Removing Piece based on Position in the Pieces matrix
+    public Piece removePiece(Position position) {
+        if (!thereIsAPiece(position)) {
+            return null;
+        }
+        Piece piece = getPiece(position);
+        piece.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return piece;
+    }
+
     public boolean positionExists(int row, int column) {
         // rows = 8 and column = 8 and positionExists(8,8) = False
         return row >= 0 && row < rows && column >= 0 && column < columns;

@@ -1,7 +1,10 @@
 package chesslayer;
 
 import boardlayer.Board;
+import boardlayer.Piece;
+import boardlayer.Position;
 import chesslayer.enums.Color;
+import chesslayer.exceptions.ChessException;
 import chesslayer.pieces.King;
 import chesslayer.pieces.Rook;
 
@@ -13,6 +16,30 @@ public class ChessMatch {
         board = new Board(8,8);
         initialSetup();
     }
+
+    // Make a verified chess move
+    public ChessPiece performChessMove(ChessPosition positionSource, ChessPosition positionTarget) {
+        Position source = positionSource.toPosition();
+        Position target = positionTarget.toPosition();
+        validateSourcePosition(source);
+        Piece capturedPiece = makeMove(source, target);
+        return (ChessPiece) capturedPiece;
+    }
+
+    // Make a simple chess move
+    private Piece makeMove(Position source, Position target) {
+        Piece p = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(p, target);
+        return capturedPiece;
+    }
+
+    private void validateSourcePosition(Position position) {
+        if (!board.thereIsAPiece(position)) {
+            throw new ChessException("There is no piece on source position");
+        }
+    }
+
 
     // Creating a ChessPiece list from the Piece list in Board class
     public ChessPiece[][] getPieces() {
