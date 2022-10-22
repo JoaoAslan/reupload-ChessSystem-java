@@ -9,7 +9,7 @@ public class Board {
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        pieces = new Piece[rows][columns]; // Setting list size (NULL DATA)
+        pieces = new Piece[rows][columns];
     }
 
     public int getRows() {
@@ -26,5 +26,11 @@ public class Board {
 
     public Piece getPiece(Position position) {
         return pieces[position.getRow()][position.getColumn()];
+    }
+
+    // Placing Piece based on Position in the Pieces matrix
+    public void placePiece(Piece piece, Position position) {
+        pieces[position.getRow()][position.getColumn()] = piece;
+        piece.position = position;
     }
 }
