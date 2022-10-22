@@ -9,7 +9,15 @@ public class Board {
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        pieces = null;
+        pieces = new Piece[rows][columns]; // Setting list size (NULL DATA)
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
     }
 
     public Piece getPiece(int row, int column) {
