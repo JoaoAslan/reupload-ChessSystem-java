@@ -1,5 +1,6 @@
 package application;
 
+import chesslayer.ChessMatch;
 import chesslayer.ChessPiece;
 import chesslayer.ChessPosition;
 import chesslayer.enums.Color;
@@ -34,6 +35,13 @@ public class UI {
         catch (RuntimeException e) {
             throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
         }
+    }
+
+    // Printing some extra information (Turn and CurrentPlayer) with the Board
+    public static void printMatch(ChessMatch chessMatch) {
+        printBoard(chessMatch.getPieces());
+        System.out.print("\nTurn: "+ chessMatch.getTurn());
+        System.out.println("\nWaiting player: "+ chessMatch.getCurrentPlayer());
     }
 
     // PrintBoard without background
