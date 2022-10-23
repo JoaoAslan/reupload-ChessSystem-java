@@ -4,7 +4,7 @@ import boardlayer.Board;
 import boardlayer.Piece;
 import chesslayer.enums.Color;
 
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
 
     private Color color;
 
