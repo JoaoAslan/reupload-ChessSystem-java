@@ -5,9 +5,7 @@ import chesslayer.ChessPiece;
 import chesslayer.ChessPosition;
 import chesslayer.enums.Color;
 
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class UI {
 
@@ -38,8 +36,9 @@ public class UI {
     }
 
     // Printing some extra information (Turn and CurrentPlayer) with the Board
-    public static void printMatch(ChessMatch chessMatch) {
+    public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
         printBoard(chessMatch.getPieces());
+        printCapturedPieces(captured);
         System.out.print("\nTurn: "+ chessMatch.getTurn());
         System.out.println("\nWaiting player: "+ chessMatch.getCurrentPlayer());
     }
@@ -86,4 +85,14 @@ public class UI {
         System.out.print(" ");
     }
 
+    private static void printCapturedPieces(List<ChessPiece> captured) {
+        List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).toList();
+        List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).toList();
+
+        System.out.println("\nCaptured pieces:");
+        System.out.print("White: " + ANSI_WHITE);
+        System.out.println(Arrays.toString(white.toArray()) + ANSI_RESET);
+        System.out.print("Black: " + ANSI_YELLOW);
+        System.out.println(Arrays.toString(black.toArray()) + ANSI_RESET);
+    }
 }
