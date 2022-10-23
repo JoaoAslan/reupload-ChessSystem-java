@@ -61,6 +61,13 @@ public class ChessMatch {
         return mat;
     }
 
+    // Create a Boolean list of possible moves based on the ValidateSourcePosition (CHESSPOSITION ARGUMENT)
+    public boolean[][] possibleMoves(ChessPosition sourcePosition) {
+        Position position = sourcePosition.toPosition();
+        validateSourcePosition(position);
+        return board.getPiece(position).possibleMoves();
+    }
+
     private void placeNewPiece(char column, int row, ChessPiece piece) {
         board.placePiece(piece, new ChessPosition(column, row).toPosition());
     }
