@@ -35,12 +35,15 @@ public class UI {
         }
     }
 
-    // Printing some extra information (Turn and CurrentPlayer) with the Board
+    // Printing some extra information (Turn, CurrentPlayer and CHECK) with the Board
     public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
         printBoard(chessMatch.getPieces());
         printCapturedPieces(captured);
         System.out.print("\nTurn: "+ chessMatch.getTurn());
-        System.out.println("\nWaiting player: "+ chessMatch.getCurrentPlayer());
+        System.out.print("\nWaiting player: "+ chessMatch.getCurrentPlayer());
+        if (chessMatch.getCheck()) {
+            System.out.println("\nCHECK!");
+        }
     }
 
     // PrintBoard without background
