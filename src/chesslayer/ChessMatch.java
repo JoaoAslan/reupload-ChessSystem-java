@@ -95,6 +95,9 @@ public class ChessMatch {
     }
 
     private void validateSourcePosition(Position position) {
+        if (!board.positionExists(position)) {
+            throw new ChessException("Position not on the board");
+        }
         if (!board.thereIsAPiece(position)) {
             throw new ChessException("There is no piece on source position");
         }
@@ -107,6 +110,9 @@ public class ChessMatch {
     }
 
     private void validateTargetPosition(Position source, Position target) {
+        if (!board.positionExists(target)) {
+            throw new ChessException("Position not on the board");
+        }
         if (!board.getPiece(source).possibleMove(target)) {
             throw new ChessException("The chosen piece can't move to target position");
         }
