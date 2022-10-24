@@ -1,5 +1,6 @@
 package application;
 
+import boardlayer.exceptions.BoardException;
 import chesslayer.ChessMatch;
 import chesslayer.ChessPiece;
 import chesslayer.ChessPosition;
@@ -37,7 +38,7 @@ public class Program {
                     captured.add(capturedPiece);
                 }
             }
-            catch (ChessException e) {
+            catch (BoardException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
