@@ -5,6 +5,7 @@ import boardlayer.Piece;
 import boardlayer.Position;
 import chesslayer.enums.Color;
 import chesslayer.exceptions.ChessException;
+import chesslayer.pieces.Bishop;
 import chesslayer.pieces.King;
 import chesslayer.pieces.Pawn;
 import chesslayer.pieces.Rook;
@@ -204,7 +205,9 @@ public class ChessMatch {
     // Starting the game by placing the Pieces in each Position
     public void initialSetup() {
         placeNewPiece('a', 1, new Rook(board, Color.WHITE));
+        placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
         placeNewPiece('e', 1, new King(board, Color.WHITE));
+        placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
         placeNewPiece('h', 1, new Rook(board, Color.WHITE));
         placeNewPiece('a', 2, new Pawn(board, Color.WHITE));
         placeNewPiece('b', 2, new Pawn(board, Color.WHITE));
@@ -216,7 +219,9 @@ public class ChessMatch {
         placeNewPiece('h', 2, new Pawn(board, Color.WHITE));
 
         placeNewPiece('a', 8, new Rook(board, Color.BLACK));
+        placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
         placeNewPiece('e', 8, new King(board, Color.BLACK));
+        placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
         placeNewPiece('h', 8, new Rook(board, Color.BLACK));
         placeNewPiece('a', 7, new Pawn(board, Color.BLACK));
         placeNewPiece('b', 7, new Pawn(board, Color.BLACK));
