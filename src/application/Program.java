@@ -4,8 +4,6 @@ import boardlayer.exceptions.BoardException;
 import chesslayer.ChessMatch;
 import chesslayer.ChessPiece;
 import chesslayer.ChessPosition;
-import chesslayer.exceptions.ChessException;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
