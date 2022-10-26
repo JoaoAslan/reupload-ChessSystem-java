@@ -9,6 +9,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import static application.UI.printPromotion;
+
 public class Program {
     public static void main(String[] args) {
 
@@ -35,6 +37,12 @@ public class Program {
                 if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
+
+                // Special Move: Promotion (UI method)
+                if (chessMatch.getPromoted() != null) {
+                    chessMatch.replacePromotedPiece(printPromotion(sc));
+                }
+
             }
             catch (BoardException e) {
                 System.out.println(e.getMessage());

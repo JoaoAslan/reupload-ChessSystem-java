@@ -25,7 +25,7 @@ public class UI {
     // Reading a String and transform it into a ChessPosition
     public static ChessPosition readChessPosition(Scanner sc) {
         try {
-            String s = sc.nextLine().toLowerCase(Locale.ROOT);
+            String s = sc.nextLine().toLowerCase();
             char column = s.charAt(0);
             int row = Integer.parseInt(s.substring(1));
             return new ChessPosition(column, row);
@@ -103,5 +103,16 @@ public class UI {
         System.out.println(Arrays.toString(white.toArray()) + ANSI_RESET);
         System.out.print("Black: " + ANSI_YELLOW);
         System.out.println(Arrays.toString(black.toArray()) + ANSI_RESET);
+    }
+
+    // Special Move: PROMOTION (Delegation method)
+    public static String printPromotion(Scanner sc) {
+        System.out.print("Enter piece for promotion (B/N/R/Q): ");
+        String type = sc.nextLine().toUpperCase();
+        while (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+            System.out.print("Invalid value! Enter piece for promotion (B/N/R/Q): ");
+            type = sc.nextLine().toUpperCase();
+        }
+        return type;
     }
 }
